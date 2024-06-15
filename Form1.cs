@@ -9,7 +9,7 @@ namespace GerenciamentoClubesEsportivos
     public partial class Form1 : Form
     {
         private MemberController _controller;
-        private int selectedMemberId;
+        private int _selectedMemberId;
 
         public Form1()
         {
@@ -34,7 +34,7 @@ namespace GerenciamentoClubesEsportivos
             {
                 int cell_index = dataGridView1.CurrentCell.RowIndex;
                 dataGridView1.Rows.RemoveAt(cell_index);
-                _controller.DeleteMember(selectedMemberId);
+                _controller.DeleteMember(_selectedMemberId);
                 LoadData();
                 Clear();
                 LogMessage("Membro excluído com sucesso!");
@@ -61,10 +61,10 @@ namespace GerenciamentoClubesEsportivos
         private void LoadData()
         {
             var members = _controller.GetAllMembers();
-            dataGridView1.DataSource = null; // Limpa o DataGridView primeiro
+            dataGridView1.DataSource = null;
             dataGridView1.DataSource = members;
 
-            dataGridView1.Columns["Id"].Visible = false; // Hide the Id column if needed
+            dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["Name"].HeaderText = "Nome";
             dataGridView1.Columns["Email"].HeaderText = "Email";
             dataGridView1.Columns["CPF"].HeaderText = "CPF";
@@ -96,13 +96,12 @@ namespace GerenciamentoClubesEsportivos
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Ensure the row index is valid
             if (dataGridView1.CurrentRow != null && dataGridView1.CurrentRow.Index >= 0 && dataGridView1.CurrentRow.Index < dataGridView1.Rows.Count)
             {
                 var row = dataGridView1.Rows[e.RowIndex];
                 if (row.Cells["Id"].Value != null)
                 {
-                    selectedMemberId = (int)row.Cells["Id"].Value;
+                    _selectedMemberId = (int)row.Cells["Id"].Value;
                     DeleteButton.Enabled = true;
                 }
             }
