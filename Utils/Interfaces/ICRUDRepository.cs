@@ -14,6 +14,6 @@ namespace GerenciamentoClubesEsportivos.Utils.Interfaces
         void Add(T entity);
         void AddAll(List<T> members);
         void Update(T entity);
-        void Delete(T entity);
+        void Delete(int id);
     }
 }

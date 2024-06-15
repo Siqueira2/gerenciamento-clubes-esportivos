@@ -39,6 +39,11 @@ namespace GerenciamentoClubesEsportivos.Controllers
             return repository.GetAll();
         }
 
+        public void Delete(int id)
+        {
+            repository.Delete(id);
+        }
+
         public List<Member> ImportFromXmlFile(string filePath)
         {
             List<Member> members = XmlService.DeserializeFromFile<Member>(filePath);

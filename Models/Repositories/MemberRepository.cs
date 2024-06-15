@@ -43,9 +43,9 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
                 existingMember.MembershipDate = member.MembershipDate;
             }
         }
-        public void Delete(Member member)
+        public void Delete(int id)
         {
-            Member existingMember = GetByID(member.Id);
+            Member existingMember = GetByID(id);
             if (existingMember != null)
                 Members.Remove(existingMember);
         }
