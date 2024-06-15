@@ -82,7 +82,7 @@ namespace GerenciamentoClubesEsportivos
                 string phoneNumber = InputPhone.Text;
                 DateTime membershipDate = DateTime.Now;
 
-                _controller.AddMember(name, cpf, email, cep, phoneNumber, membershipDate);
+                _controller.AddMember(name, cpf, email, phoneNumber, cep, membershipDate);
 
                 LogMessage("Sócio cadastrado com sucesso!");
             }
@@ -105,7 +105,6 @@ namespace GerenciamentoClubesEsportivos
             {
                 DataGridViewRow row = dataGridView1.Rows[cell_index];
                 _selectedMemberId = Convert.ToInt32(row.Cells["Id"].Value);
-                MessageBox.Show(_selectedMemberId.ToString());
                 InputName.Text = row.Cells["Name"].Value.ToString();
                 InputEmail.Text = row.Cells["Email"].Value.ToString();
                 InputCPF.Text = row.Cells["CPF"].Value.ToString();
