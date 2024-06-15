@@ -51,17 +51,18 @@
             // LabelName
             // 
             LabelName.AutoSize = true;
-            LabelName.Location = new Point(47, 87);
+            LabelName.Location = new Point(54, 116);
             LabelName.Name = "LabelName";
-            LabelName.Size = new Size(40, 15);
+            LabelName.Size = new Size(50, 20);
             LabelName.TabIndex = 0;
             LabelName.Text = "Nome";
             // 
             // DismissButton
             // 
-            DismissButton.Location = new Point(268, 323);
+            DismissButton.Location = new Point(306, 431);
+            DismissButton.Margin = new Padding(3, 4, 3, 4);
             DismissButton.Name = "DismissButton";
-            DismissButton.Size = new Size(75, 23);
+            DismissButton.Size = new Size(86, 31);
             DismissButton.TabIndex = 1;
             DismissButton.Text = "Cancelar";
             DismissButton.UseVisualStyleBackColor = true;
@@ -79,104 +80,115 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(369, 83);
+            dataGridView1.Location = new Point(422, 111);
+            dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(616, 428);
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(704, 571);
             dataGridView1.TabIndex = 2;
             // 
             // InputName
             // 
-            InputName.Location = new Point(103, 83);
+            InputName.Location = new Point(118, 111);
+            InputName.Margin = new Padding(3, 4, 3, 4);
             InputName.Name = "InputName";
-            InputName.Size = new Size(240, 23);
+            InputName.Size = new Size(274, 27);
             InputName.TabIndex = 3;
             // 
             // LabelEmail
             // 
             LabelEmail.AutoSize = true;
-            LabelEmail.Location = new Point(51, 132);
+            LabelEmail.Location = new Point(58, 176);
             LabelEmail.Name = "LabelEmail";
-            LabelEmail.Size = new Size(36, 15);
+            LabelEmail.Size = new Size(46, 20);
             LabelEmail.TabIndex = 0;
             LabelEmail.Text = "Email";
             // 
             // InputEmail
             // 
-            InputEmail.Location = new Point(103, 128);
+            InputEmail.Location = new Point(118, 171);
+            InputEmail.Margin = new Padding(3, 4, 3, 4);
             InputEmail.Name = "InputEmail";
-            InputEmail.Size = new Size(240, 23);
+            InputEmail.Size = new Size(274, 27);
             InputEmail.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(36, 175);
+            label2.Location = new Point(41, 233);
             label2.Name = "label2";
-            label2.Size = new Size(51, 15);
+            label2.Size = new Size(66, 20);
             label2.TabIndex = 0;
             label2.Text = "Telefone";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(59, 220);
+            label3.Location = new Point(67, 293);
             label3.Name = "label3";
-            label3.Size = new Size(28, 15);
+            label3.Size = new Size(33, 20);
             label3.TabIndex = 0;
             label3.Text = "CPF";
             // 
             // InputPhone
             // 
-            InputPhone.Location = new Point(103, 171);
+            InputPhone.Location = new Point(118, 228);
+            InputPhone.Margin = new Padding(3, 4, 3, 4);
             InputPhone.Name = "InputPhone";
-            InputPhone.Size = new Size(240, 23);
+            InputPhone.Size = new Size(274, 27);
             InputPhone.TabIndex = 3;
             // 
             // InputCPF
             // 
-            InputCPF.Location = new Point(103, 216);
+            InputCPF.Location = new Point(118, 288);
+            InputCPF.Margin = new Padding(3, 4, 3, 4);
             InputCPF.Name = "InputCPF";
-            InputCPF.Size = new Size(240, 23);
+            InputCPF.Size = new Size(274, 27);
             InputCPF.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(59, 267);
+            label4.Location = new Point(67, 356);
             label4.Name = "label4";
-            label4.Size = new Size(28, 15);
+            label4.Size = new Size(34, 20);
             label4.TabIndex = 0;
             label4.Text = "CEP";
             // 
             // InputCEP
             // 
-            InputCEP.Location = new Point(103, 263);
+            InputCEP.Location = new Point(118, 351);
+            InputCEP.Margin = new Padding(3, 4, 3, 4);
             InputCEP.Name = "InputCEP";
-            InputCEP.Size = new Size(240, 23);
+            InputCEP.Size = new Size(274, 27);
             InputCEP.TabIndex = 3;
             // 
             // InputSearch
             // 
-            InputSearch.Location = new Point(369, 37);
+            InputSearch.Location = new Point(422, 49);
+            InputSearch.Margin = new Padding(3, 4, 3, 4);
             InputSearch.Name = "InputSearch";
-            InputSearch.Size = new Size(273, 23);
+            InputSearch.Size = new Size(311, 27);
             InputSearch.TabIndex = 5;
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(648, 37);
+            SearchButton.Location = new Point(741, 49);
+            SearchButton.Margin = new Padding(3, 4, 3, 4);
             SearchButton.Name = "SearchButton";
-            SearchButton.Size = new Size(75, 23);
+            SearchButton.Size = new Size(86, 31);
             SearchButton.TabIndex = 1;
             SearchButton.Text = "Buscar";
             SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
             // 
             // DeleteButton
             // 
             DeleteButton.Enabled = false;
-            DeleteButton.Location = new Point(186, 323);
+            DeleteButton.Location = new Point(213, 431);
+            DeleteButton.Margin = new Padding(3, 4, 3, 4);
             DeleteButton.Name = "DeleteButton";
-            DeleteButton.Size = new Size(75, 23);
+            DeleteButton.Size = new Size(86, 31);
             DeleteButton.TabIndex = 1;
             DeleteButton.Text = "Deletar";
             DeleteButton.UseVisualStyleBackColor = true;
@@ -184,9 +196,10 @@
             // 
             // SaveButton
             // 
-            SaveButton.Location = new Point(103, 323);
+            SaveButton.Location = new Point(118, 431);
+            SaveButton.Margin = new Padding(3, 4, 3, 4);
             SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(75, 23);
+            SaveButton.Size = new Size(86, 31);
             SaveButton.TabIndex = 1;
             SaveButton.Text = "Adicionar";
             SaveButton.UseVisualStyleBackColor = true;
@@ -194,9 +207,9 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(997, 523);
+            ClientSize = new Size(1139, 697);
             Controls.Add(InputSearch);
             Controls.Add(InputCPF);
             Controls.Add(InputEmail);
@@ -213,6 +226,7 @@
             Controls.Add(DeleteButton);
             Controls.Add(DismissButton);
             Controls.Add(LabelName);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Nome";
             Load += Form1_Load;

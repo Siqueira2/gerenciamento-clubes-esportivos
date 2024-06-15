@@ -37,7 +37,7 @@ namespace GerenciamentoClubesEsportivos
                 _controller.DeleteMember(_selectedMemberId);
                 LoadData();
                 Clear();
-                LogMessage("Membro excluído com sucesso!");
+                LogMessage("Membro excluï¿½do com sucesso!");
             }
             catch (Exception ex)
             {
@@ -70,7 +70,7 @@ namespace GerenciamentoClubesEsportivos
             dataGridView1.Columns["CPF"].HeaderText = "CPF";
             dataGridView1.Columns["CEP"].HeaderText = "CEP";
             dataGridView1.Columns["PhoneNumber"].HeaderText = "Telefone";
-            dataGridView1.Columns["MembershipDate"].HeaderText = "Data de Associação";
+            dataGridView1.Columns["MembershipDate"].HeaderText = "Data de Associaï¿½ï¿½o";
         }
 
         private void SaveMember()
@@ -86,7 +86,7 @@ namespace GerenciamentoClubesEsportivos
 
                 _controller.AddMember(name, email, cpf, cep, phoneNumber, membershipDate);
 
-                LogMessage("Sócio cadastrado com sucesso!");
+                LogMessage("Sï¿½cio cadastrado com sucesso!");
             }
             catch (Exception ex)
             {

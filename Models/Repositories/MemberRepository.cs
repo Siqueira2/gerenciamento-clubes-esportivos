@@ -16,10 +16,11 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
         public MemberRepository()
         {
             Members = new List<Member>();
+            Members.Add(new Member());
         }
         public List<Member> GetAll()
         {
-            return Members;
+            return Members.Where(m => m.Id != 0).ToList();
         }
         public Member GetByID(int id)
         {
