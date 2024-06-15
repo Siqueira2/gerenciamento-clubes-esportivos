@@ -53,7 +53,7 @@ namespace GerenciamentoClubesEsportivos.Controllers
             return repository.GetAll();
         }
 
-        public void Delete(int id)
+        public void DeleteMember(int id)
         {
             repository.Delete(id);
         }
