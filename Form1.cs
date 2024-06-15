@@ -41,21 +41,26 @@ namespace GerenciamentoClubesEsportivos
 
         private void LoadData()
         {
-            dataGridView1.DataSource = _controller.GetAllMembers();
+            var members = _controller.GetAllMembers();
+            dataGridView1.DataSource = null; // Limpa o DataGridView primeiro
+            dataGridView1.DataSource = members;
         }
 
         private void SaveMember()
         {
-            string Name, Email, CPF, CEP, PhoneNumber;
-
-            Name = InputName.Text;
-            Email = InputEmail.Text;
-            CPF = InputCPF.Text;
-            CEP = InputCEP.Text;
-            PhoneNumber = InputPhone.Text;
+            string name = InputName.Text;
+            string email = InputEmail.Text;
+            string cpf = InputCPF.Text;
+            string cep = InputCEP.Text;
+            string phoneNumber = InputPhone.Text;
             DateTime membershipDate = DateTime.Now;
 
-            _controller.AddMember(Name, Email, CPF, CEP, PhoneNumber, membershipDate);
+            _controller.AddMember(name, email, cpf, cep, phoneNumber, membershipDate);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Implemente este método se necessário
         }
     }
 }
