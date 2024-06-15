@@ -10,6 +10,7 @@ namespace GerenciamentoClubesEsportivos
     {
         private MemberController _controller;
         private int _selectedMemberId;
+        public int cell_index { get; set; }
 
         public Form1()
         {
@@ -32,12 +33,10 @@ namespace GerenciamentoClubesEsportivos
         {
             try
             {
-                int cell_index = dataGridView1.CurrentCell.RowIndex;
-                dataGridView1.Rows.RemoveAt(cell_index);
                 _controller.DeleteMember(_selectedMemberId);
                 LoadData();
                 Clear();
-                LogMessage("Membro exclu�do com sucesso!");
+                LogMessage("Membro excludo com sucesso!");
             }
             catch (Exception ex)
             {
@@ -55,7 +54,6 @@ namespace GerenciamentoClubesEsportivos
         public void Clear()
         {
             InputName.Text = InputEmail.Text = InputCPF.Text = InputCEP.Text = InputPhone.Text = "";
-            DeleteButton.Enabled = false;
         }
 
         private void LoadData()
@@ -70,7 +68,7 @@ namespace GerenciamentoClubesEsportivos
             dataGridView1.Columns["CPF"].HeaderText = "CPF";
             dataGridView1.Columns["CEP"].HeaderText = "CEP";
             dataGridView1.Columns["PhoneNumber"].HeaderText = "Telefone";
-            dataGridView1.Columns["MembershipDate"].HeaderText = "Data de Associa��o";
+            dataGridView1.Columns["MembershipDate"].HeaderText = "Data de Associação";
         }
 
         private void SaveMember()
@@ -84,9 +82,9 @@ namespace GerenciamentoClubesEsportivos
                 string phoneNumber = InputPhone.Text;
                 DateTime membershipDate = DateTime.Now;
 
-                _controller.AddMember(name, email, cpf, cep, phoneNumber, membershipDate);
+                _controller.AddMember(name, cpf, email, cep, phoneNumber, membershipDate);
 
-                LogMessage("S�cio cadastrado com sucesso!");
+                LogMessage("Sócio cadastrado com sucesso!");
             }
             catch (Exception ex)
             {
@@ -94,22 +92,26 @@ namespace GerenciamentoClubesEsportivos
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null && dataGridView1.CurrentRow.Index >= 0 && dataGridView1.CurrentRow.Index < dataGridView1.Rows.Count)
-            {
-                var row = dataGridView1.Rows[e.RowIndex];
-                if (row.Cells["Id"].Value != null)
-                {
-                    _selectedMemberId = (int)row.Cells["Id"].Value;
-                    DeleteButton.Enabled = true;
-                }
-            }
-        }
-
         private void LogMessage(string message)
         {
             MessageBox.Show(message);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            cell_index = e.RowIndex;
+            DeleteButton.Enabled = true;
+            if (cell_index >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[cell_index];
+                _selectedMemberId = Convert.ToInt32(row.Cells["Id"].Value);
+                MessageBox.Show(_selectedMemberId.ToString());
+                InputName.Text = row.Cells["Name"].Value.ToString();
+                InputEmail.Text = row.Cells["Email"].Value.ToString();
+                InputCPF.Text = row.Cells["CPF"].Value.ToString();
+                InputCEP.Text = row.Cells["CEP"].Value.ToString();
+                InputPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
+            }
         }
     }
 }
