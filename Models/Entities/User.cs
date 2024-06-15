@@ -22,5 +22,6 @@ namespace GerenciamentoClubesEsportivos.Models.Entities
         [Required]
         [RegularExpression(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$", ErrorMessage = "O CPF deve estar no formato XXX.XXX.XXX-XX.")]
         public string CPF { get => cpf!; set => cpf = value; }
+
     }
 }

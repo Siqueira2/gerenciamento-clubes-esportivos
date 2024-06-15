@@ -34,6 +34,20 @@ namespace GerenciamentoClubesEsportivos.Controllers
             repository.Add(member);
         }
 
+        public void AddDependent(string name, string cpf, string kinship, int memberId)
+        {
+            Dependent dependent = DependentFactory.Build(name, cpf, kinship, memberId);
+
+            //var context = new ValidationContext(dependent);
+            //var results = new List<ValidationResult>();
+            //bool isValid = Validator.TryValidateObject(dependent, context, results, true);
+
+            //if (!isValid)
+            //    throw new Exception(results[0].ErrorMessage);
+
+            repository.AddDependent(dependent);
+        }
+
         public List<Member> GetAllMembers()
         {
             return repository.GetAll();
@@ -55,7 +69,7 @@ namespace GerenciamentoClubesEsportivos.Controllers
         }
         public void ExportAsXmlFile(List<Member> test)
         {
-            XmlService.SerializeToFile(test, @"C:\", "Members");
+            XmlService.SerializeToFile(test, @"C:\Users\walys\source\repos", "Members");
         }
     }
 }

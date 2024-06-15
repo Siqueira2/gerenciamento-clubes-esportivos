@@ -11,6 +11,7 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
     internal class MemberRepository : ICRUDRepository<Member>
     {
         private List<Member> Members;
+        private int sequencialId = 0;
 
         public MemberRepository()
         {
@@ -26,8 +27,8 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
         }
         public void Add(Member member)
         {
-            var lastMember = Members.LastOrDefault();
-            member.Id = lastMember != null ? lastMember.Id + 1 : 0;
+            member.Id = sequencialId + 1;
+            sequencialId++;
             Members.Add(member);
         }
         public void Update(Member member)
@@ -49,6 +50,13 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
             if (existingMember != null)
                 Members.Remove(existingMember);
         }
+
+        public void DeleteDependent(int id)
+        {
+            Member existingDependent = GetByID(id);
+            if(existingDependent != null) Members.Remove(existingDependent);
+        } 
+
         public List<Member> Search(string query)
         {
             return Members.Where(m => m.Name.ToLower().Contains(query.ToLower())).ToList();
@@ -56,6 +64,14 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
         public void AddAll(List<Member> members)
         {
             Members.AddRange(members);
+        }
+
+        public void AddDependent(Dependent dependent)
+        {
+            Member member = GetByID(dependent.MemberID);
+            dependent.Id = sequencialId + 1;
+            sequencialId++;
+            member.Dependents.Add(dependent);
         }
     }
 }

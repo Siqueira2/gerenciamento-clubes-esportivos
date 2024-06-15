@@ -1,3 +1,4 @@
+using GerenciamentoClubesEsportivos.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,10 @@ namespace GerenciamentoClubesEsportivos.Utils.Interfaces
         List<T> Search(string query);
         T GetByID(int id);
         void Add(T entity);
+        void AddDependent(Dependent entity);
         void AddAll(List<T> members);
         void Update(T entity);
         void Delete(int id);
+        void DeleteDependent(int id);
     }
 }

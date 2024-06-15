@@ -8,7 +8,9 @@ namespace GerenciamentoClubesEsportivos.Models.Entities
 {
     public class Dependent : User
     {
-        private string Kindship { get; set; }
-        private int MemberID { get; set; }
+        public string Kinship { get; set; }
+        public int MemberID { get; set; }
+
+        public Dependent() { }
     }
 }
