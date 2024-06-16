@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GerenciamentoClubesEsportivos.Utils.Interfaces
 {
-    internal interface ICRUDRepository<T>
+    public interface ICRUDRepository<T>
     {
         List<T> GetAll();
         List<T> Search(string query);
