@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GerenciamentoClubesEsportivos.Models.Repositories
 {
-    internal class MemberRepository : ICRUDRepository<Member>
+    public class MemberRepository : ICRUDRepository<Member>
     {
         private List<Member> Members;
 
