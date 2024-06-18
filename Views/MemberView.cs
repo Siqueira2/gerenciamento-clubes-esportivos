@@ -69,7 +69,7 @@ namespace GerenciamentoClubesEsportivos.Views
                 OnPropertyChanged("PhoneNumber");
             }
         }
-        
+
         public MemberView(MemberController controller)
         {
             this.controller = controller;
@@ -149,10 +149,10 @@ namespace GerenciamentoClubesEsportivos.Views
         //metodos adicionais/dependentes
         private void Clear()
         {
-            InputName.Text = 
-            InputEmail.Text = 
-            InputCPF.Text = 
-            InputCEP.Text = 
+            InputName.Text =
+            InputEmail.Text =
+            InputCPF.Text =
+            InputCEP.Text =
             InputPhone.Text = "";
         }
         private void EnableUpdateOrDelete()
@@ -175,6 +175,48 @@ namespace GerenciamentoClubesEsportivos.Views
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.Filter = "Arquivos XML (*.xml)|*.xml|Todos os arquivos (*.*)|*.*";
+            openFileDialog1.Title = "Selecionar Arquivo XML";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string caminhoArquivo = openFileDialog1.FileName;
+                    controller.ImportFromXmlFile(caminhoArquivo);
+                    UpdateDataGridView(controller.GetAllMembers());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocorreu um erro ao importar o XML: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Arquivos XML (*.xml)|*.xml|Todos os arquivos (*.*)|*.*";
+            saveFileDialog1.Title = "Salvar como XML";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string FileName = saveFileDialog1.FileName;
+                    controller.ExportAsXmlFile(FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocorreu um erro ao exportar para XML: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

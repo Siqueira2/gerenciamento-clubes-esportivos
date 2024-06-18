@@ -45,16 +45,17 @@
             LabelEmail = new Label();
             label3 = new Label();
             label4 = new Label();
+            ImportButton = new Button();
+            ExportButton = new Button();
             ((System.ComponentModel.ISupportInitialize)Table).BeginInit();
             SuspendLayout();
             // 
             // EditButton
             // 
             EditButton.Enabled = false;
-            EditButton.Location = new Point(95, 454);
-            EditButton.Margin = new Padding(3, 4, 3, 4);
+            EditButton.Location = new Point(83, 340);
             EditButton.Name = "EditButton";
-            EditButton.Size = new Size(86, 31);
+            EditButton.Size = new Size(75, 23);
             EditButton.TabIndex = 23;
             EditButton.Text = "Editar";
             EditButton.UseVisualStyleBackColor = true;
@@ -63,50 +64,46 @@
             // 
             // InputName
             // 
-            InputName.Location = new Point(95, 72);
-            InputName.Margin = new Padding(3, 4, 3, 4);
+            InputName.Location = new Point(83, 54);
             InputName.Name = "InputName";
             InputName.PlaceholderText = "Emma Lazarus";
-            InputName.Size = new Size(274, 27);
+            InputName.Size = new Size(240, 23);
             InputName.TabIndex = 20;
             // 
             // Table
             // 
             Table.AllowUserToAddRows = false;
             Table.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Table.Location = new Point(409, 72);
-            Table.Margin = new Padding(3, 4, 3, 4);
+            Table.Location = new Point(358, 54);
             Table.Name = "Table";
             Table.RowHeadersWidth = 51;
-            Table.Size = new Size(704, 571);
+            Table.Size = new Size(616, 428);
             Table.TabIndex = 16;
             Table.CellClick += HandleCellClick;
             Table.CellContentClick += HandleCellClick;
             // 
             // InputSearch
             // 
-            InputSearch.Location = new Point(409, 21);
-            InputSearch.Margin = new Padding(3, 4, 3, 4);
+            InputSearch.Location = new Point(358, 16);
             InputSearch.Name = "InputSearch";
             InputSearch.PlaceholderText = "John Doe";
-            InputSearch.Size = new Size(311, 27);
+            InputSearch.Size = new Size(273, 23);
             InputSearch.TabIndex = 22;
             // 
             // LabelName
             // 
             LabelName.AutoSize = true;
-            LabelName.Location = new Point(31, 77);
+            LabelName.Location = new Point(27, 58);
             LabelName.Name = "LabelName";
-            LabelName.Size = new Size(50, 20);
+            LabelName.Size = new Size(40, 15);
             LabelName.TabIndex = 10;
             LabelName.Text = "Nome";
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(726, 21);
-            SearchButton.Margin = new Padding(3, 4, 3, 4);
+            SearchButton.Location = new Point(635, 16);
             SearchButton.Name = "SearchButton";
-            SearchButton.Size = new Size(86, 31);
+            SearchButton.Size = new Size(75, 23);
             SearchButton.TabIndex = 12;
             SearchButton.Text = "Buscar";
             SearchButton.UseVisualStyleBackColor = true;
@@ -114,19 +111,17 @@
             // 
             // InputCPF
             // 
-            InputCPF.Location = new Point(95, 249);
-            InputCPF.Margin = new Padding(3, 4, 3, 4);
+            InputCPF.Location = new Point(83, 187);
             InputCPF.Name = "InputCPF";
             InputCPF.PlaceholderText = "000.000.000-00";
-            InputCPF.Size = new Size(274, 27);
+            InputCPF.Size = new Size(240, 23);
             InputCPF.TabIndex = 19;
             // 
             // DismissButton
             // 
-            DismissButton.Location = new Point(283, 392);
-            DismissButton.Margin = new Padding(3, 4, 3, 4);
+            DismissButton.Location = new Point(248, 294);
             DismissButton.Name = "DismissButton";
-            DismissButton.Size = new Size(86, 31);
+            DismissButton.Size = new Size(75, 23);
             DismissButton.TabIndex = 13;
             DismissButton.Text = "Cancelar";
             DismissButton.UseVisualStyleBackColor = true;
@@ -134,20 +129,18 @@
             // 
             // InputEmail
             // 
-            InputEmail.Location = new Point(95, 132);
-            InputEmail.Margin = new Padding(3, 4, 3, 4);
+            InputEmail.Location = new Point(83, 99);
             InputEmail.Name = "InputEmail";
             InputEmail.PlaceholderText = "emma@mail.com";
-            InputEmail.Size = new Size(274, 27);
+            InputEmail.Size = new Size(240, 23);
             InputEmail.TabIndex = 18;
             // 
             // DeleteButton
             // 
             DeleteButton.Enabled = false;
-            DeleteButton.Location = new Point(283, 454);
-            DeleteButton.Margin = new Padding(3, 4, 3, 4);
+            DeleteButton.Location = new Point(248, 340);
             DeleteButton.Name = "DeleteButton";
-            DeleteButton.Size = new Size(86, 31);
+            DeleteButton.Size = new Size(75, 23);
             DeleteButton.TabIndex = 14;
             DeleteButton.Text = "Deletar";
             DeleteButton.UseVisualStyleBackColor = true;
@@ -156,19 +149,17 @@
             // 
             // InputCEP
             // 
-            InputCEP.Location = new Point(95, 312);
-            InputCEP.Margin = new Padding(3, 4, 3, 4);
+            InputCEP.Location = new Point(83, 234);
             InputCEP.Name = "InputCEP";
             InputCEP.PlaceholderText = "11.222-333";
-            InputCEP.Size = new Size(274, 27);
+            InputCEP.Size = new Size(240, 23);
             InputCEP.TabIndex = 21;
             // 
             // SaveButton
             // 
-            SaveButton.Location = new Point(95, 392);
-            SaveButton.Margin = new Padding(3, 4, 3, 4);
+            SaveButton.Location = new Point(83, 294);
             SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(86, 31);
+            SaveButton.Size = new Size(75, 23);
             SaveButton.TabIndex = 15;
             SaveButton.Text = "Adicionar";
             SaveButton.UseVisualStyleBackColor = true;
@@ -176,52 +167,71 @@
             // 
             // InputPhone
             // 
-            InputPhone.Location = new Point(95, 189);
-            InputPhone.Margin = new Padding(3, 4, 3, 4);
+            InputPhone.Location = new Point(83, 142);
             InputPhone.Name = "InputPhone";
             InputPhone.PlaceholderText = "(00) 12345-6789";
-            InputPhone.Size = new Size(274, 27);
+            InputPhone.Size = new Size(240, 23);
             InputPhone.TabIndex = 17;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(18, 194);
+            label2.Location = new Point(16, 146);
             label2.Name = "label2";
-            label2.Size = new Size(66, 20);
+            label2.Size = new Size(51, 15);
             label2.TabIndex = 9;
             label2.Text = "Telefone";
             // 
             // LabelEmail
             // 
             LabelEmail.AutoSize = true;
-            LabelEmail.Location = new Point(35, 137);
+            LabelEmail.Location = new Point(31, 103);
             LabelEmail.Name = "LabelEmail";
-            LabelEmail.Size = new Size(46, 20);
+            LabelEmail.Size = new Size(36, 15);
             LabelEmail.TabIndex = 8;
             LabelEmail.Text = "Email";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(44, 254);
+            label3.Location = new Point(38, 190);
             label3.Name = "label3";
-            label3.Size = new Size(33, 20);
+            label3.Size = new Size(28, 15);
             label3.TabIndex = 11;
             label3.Text = "CPF";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(44, 317);
+            label4.Location = new Point(38, 238);
             label4.Name = "label4";
-            label4.Size = new Size(34, 20);
+            label4.Size = new Size(28, 15);
             label4.TabIndex = 7;
             label4.Text = "CEP";
             // 
+            // ImportButton
+            // 
+            ImportButton.Location = new Point(899, 16);
+            ImportButton.Name = "ImportButton";
+            ImportButton.Size = new Size(75, 23);
+            ImportButton.TabIndex = 15;
+            ImportButton.Text = "Importar";
+            ImportButton.UseVisualStyleBackColor = true;
+            ImportButton.Click += ImportButton_Click;
+            // 
+            // ExportButton
+            // 
+            ExportButton.Location = new Point(818, 16);
+            ExportButton.Name = "ExportButton";
+            ExportButton.Size = new Size(75, 23);
+            ExportButton.TabIndex = 15;
+            ExportButton.Text = "Exportar";
+            ExportButton.UseVisualStyleBackColor = true;
+            ExportButton.Click += ExportButton_Click;
+            // 
             // MemberView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(EditButton);
             Controls.Add(InputName);
@@ -234,13 +244,17 @@
             Controls.Add(InputEmail);
             Controls.Add(DeleteButton);
             Controls.Add(InputCEP);
+            Controls.Add(ExportButton);
+            Controls.Add(ImportButton);
             Controls.Add(SaveButton);
             Controls.Add(InputPhone);
             Controls.Add(label2);
             Controls.Add(LabelEmail);
             Controls.Add(label3);
             Controls.Add(label4);
-            Size = new Size(1131, 664);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "MemberView";
+            Size = new Size(990, 498);
             Click += DismissButton_Click;
             ((System.ComponentModel.ISupportInitialize)Table).EndInit();
             ResumeLayout(false);
@@ -266,5 +280,7 @@
         private Label LabelEmail;
         private Label label3;
         private Label label4;
+        private Button ImportButton;
+        private Button ExportButton;
     }
 }

@@ -72,9 +72,10 @@ namespace GerenciamentoClubesEsportivos.Controllers
 
             return members;
         }
-        public void ExportAsXmlFile(List<Member> test)
+        public void ExportAsXmlFile(string FileName)
         {
-            XmlService.SerializeToFile(test, @"C:\", "Members");
+            List<Member> members = GetAllMembers();
+            XmlService.SerializeToFile(members, @"C:\", FileName);
         }
     }
 }
