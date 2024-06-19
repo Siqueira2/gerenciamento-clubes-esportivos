@@ -20,14 +20,15 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
         {
             return Members;
         }
-        public Member GetByID(int id)
+        public Member GetByID(string id)
         {
             return Members.FirstOrDefault(m => m.Id == id)!;
         }
         public void Add(Member member)
         {
+            Guid newUuid = Guid.NewGuid();
             var lastMember = Members.LastOrDefault();
-            member.Id = lastMember != null ? lastMember.Id + 1 : 0;
+            member.Id = newUuid.ToString().Substring(0, 4);
             Members.Add(member);
         }
         public void Update(Member member)
@@ -43,7 +44,7 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
                 existingMember.MembershipDate = member.MembershipDate;
             }
         }
-        public void Delete(int id)
+        public void Delete(string id)
         {
             Member existingMember = GetByID(id);
             if (existingMember != null)

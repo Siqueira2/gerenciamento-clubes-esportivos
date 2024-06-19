@@ -11,18 +11,18 @@ using GerenciamentoClubesEsportivos.Utils.Interfaces;
 
 namespace GerenciamentoClubesEsportivos.Controllers
 {
-    public class MemberController
+    public class DependentController
     {
         private ICRUDRepository<Member> repository;
 
-        public MemberController(ICRUDRepository<Member> repository)
+        public DependentController(ICRUDRepository<Member> repository)
         {
             this.repository = repository;
         }
 
-        public void AddMember(string name, string cpf, string email, string phoneNumber, string cep, DateTime membershipDate)
+        public void AddDependent(string name, string cpf, string kinship, string memberId)
         {
-            Member member = MemberFactory.Build(name, cpf, email, phoneNumber, cep, membershipDate);
+            Dependent dependent = DependentFactory.Build(name, cpf, kinship, memberId);
 
             //var context = new ValidationContext(member);
             //var results = new List<ValidationResult>();
@@ -31,7 +31,7 @@ namespace GerenciamentoClubesEsportivos.Controllers
             //if (!isValid)
               //  throw new Exception(results[0].ErrorMessage);
 
-            repository.Add(member);
+            //repository.AddDependent(dependent);
         }
         public void UpdateMember(string id, string name, string cpf, string email, string phoneNumber, string cep, DateTime membershipDate)
         {

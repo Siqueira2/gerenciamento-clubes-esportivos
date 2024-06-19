@@ -16,7 +16,7 @@ namespace GerenciamentoClubesEsportivos.Views
     {
         private readonly MemberController controller;
         private BindingList<Member>? bindingMembers;
-        private int selectedMemberId;
+        private string selectedMemberId;
 
         private string? name;
         private string? email;
@@ -134,7 +134,7 @@ namespace GerenciamentoClubesEsportivos.Views
 
             DataGridViewRow row = Table.Rows[e.RowIndex];
 
-            selectedMemberId = int.Parse(row.Cells[0].Value.ToString()!);
+            selectedMemberId = (row.Cells[0].Value.ToString()!).ToString();
             IName = row.Cells[1].Value?.ToString() ?? string.Empty;
             Email = row.Cells[2].Value?.ToString() ?? string.Empty;
             CPF = row.Cells[3].Value?.ToString() ?? string.Empty;
