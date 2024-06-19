@@ -1,4 +1,5 @@
 using GerenciamentoClubesEsportivos.Models.Entities;
+using GerenciamentoClubesEsportivos.Utils.Database;
 using GerenciamentoClubesEsportivos.Utils.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,53 +11,39 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
 {
     public class MemberRepository : ICRUDRepository<Member>
     {
-        private List<Member> Members;
+        private MockDatabase MockDatabase;
 
         public MemberRepository()
         {
-            Members = new List<Member>();
+            MockDatabase = new MockDatabase();
         }
         public List<Member> GetAll()
         {
-            return Members;
+            return MockDatabase.GetMembers();
         }
         public Member GetByID(string id)
         {
-            return Members.FirstOrDefault(m => m.Id == id)!;
+            return MockDatabase.GetMemberById(id);
         }
         public void Add(Member member)
         {
-            Guid newUuid = Guid.NewGuid();
-            var lastMember = Members.LastOrDefault();
-            member.Id = newUuid.ToString().Substring(0, 4);
-            Members.Add(member);
+           MockDatabase.AddMember(member);
         }
         public void Update(Member member)
         {
-            Member existingMember = GetByID(member.Id);
-            if (existingMember != null)
-            {
-                existingMember.Name = member.Name;
-                existingMember.Email = member.Email;
-                existingMember.CPF = member.CPF;
-                existingMember.CEP = member.CEP;
-                existingMember.PhoneNumber = member.PhoneNumber;
-                existingMember.MembershipDate = member.MembershipDate;
-            }
+            MockDatabase.UpdateMember(member);
         }
         public void Delete(string id)
         {
-            Member existingMember = GetByID(id);
-            if (existingMember != null)
-                Members.Remove(existingMember);
+            MockDatabase.DeleteMember(id);
         }
         public List<Member> Search(string query)
         {
-            return Members.Where(m => m.Name.ToLower().Contains(query.ToLower())).ToList();
+            return MockDatabase.GetMembers().Where(m => m.Name.ToLower().Contains(query.ToLower())).ToList();
         }
         public void AddAll(List<Member> members)
         {
-            Members.AddRange(members);
+            MockDatabase.AddAllMembers(members);
         }
     }
 }

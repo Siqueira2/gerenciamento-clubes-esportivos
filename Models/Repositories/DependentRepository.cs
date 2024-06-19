@@ -1,4 +1,5 @@
 using GerenciamentoClubesEsportivos.Models.Entities;
+using GerenciamentoClubesEsportivos.Utils.Database;
 using GerenciamentoClubesEsportivos.Utils.Interfaces;
 using System;
 using System.Collections;
@@ -11,57 +12,48 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
 {
     public class DependentRepository : ICRUDRepository<Dependent>
     {
-        private List<Dependent> Dependents;
+        private MockDatabase MockDatabase;
 
         public DependentRepository() { 
-            Dependents = new List<Dependent>();
+            MockDatabase = new MockDatabase();
         }
 
         public void Add(Dependent entity)
         {
-            Guid id = Guid.NewGuid();
-            entity.Id = id.ToString().Substring(0, 4);
-            Dependents.Add(entity);
+            MockDatabase.AddDependent(entity);
         }
 
-        public void AddAll(List<Dependent> members)
+        public void AddAll(List<Dependent> dependents)
         {
-            throw new NotImplementedException();
+            MockDatabase.AddAllDependents(dependents);
         }
 
         public void Delete(string id)
         {
-            throw new NotImplementedException();
+            MockDatabase.DeleteDependent(id);
         }
 
         public List<Dependent> GetAll()
         {
-            throw new NotImplementedException();
+            return MockDatabase.GetDependents();
         }
 
         public Dependent GetByID(string id)
         {
-            throw new NotImplementedException();
+            return MockDatabase.GetDependentById(id);
         }
 
         public List<Dependent> GetByMemberId(string memberID) {
-            return Dependents.Where(d => d.memberId == memberID).ToList();
+            return MockDatabase.GetDependents().Where(d => d.memberId == memberID).ToList();
         }
         public List<Dependent> Search(string query)
         {
-            return Dependents.Where(d => d.Name.ToLower().Contains(query.ToLower())).ToList();
+            return MockDatabase.GetDependents().Where(d => d.Name.ToLower().Contains(query.ToLower())).ToList();
         }
 
         public void Update(Dependent entity)
         {
-            Dependent existingDependent = GetByID(entity.Id);
-            if (existingDependent != null)
-            {
-                existingDependent.Name = entity.Name;
-                existingDependent.CPF = entity.CPF;
-                existingDependent.kinship = entity.kinship;
-                existingDependent.memberId = entity.memberId;
-            }
+           MockDatabase.UpdateDependent(entity);
         }
     }
 }

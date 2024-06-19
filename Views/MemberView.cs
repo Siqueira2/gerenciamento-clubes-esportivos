@@ -1,5 +1,6 @@
 ﻿using GerenciamentoClubesEsportivos.Controllers;
 using GerenciamentoClubesEsportivos.Models.Entities;
+using GerenciamentoClubesEsportivos.Models.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -111,6 +112,14 @@ namespace GerenciamentoClubesEsportivos.Views
         }
         private void EditButton_Click(Object sender, EventArgs e)
         {
+            DependentController controllerx = new DependentController(new DependentRepository());
+
+            MessageBox.Show("xx5");
+            foreach (var item in controllerx.GetAllDependents())
+            {
+                MessageBox.Show(item.Name + item.Id);
+            }
+
             Member member = controller.GetMemberByID(selectedMemberId);
 
             controller.UpdateMember(selectedMemberId, IName, CPF, Email, PhoneNumber, CEP, member.MembershipDate);

@@ -25,6 +25,6 @@ namespace GerenciamentoClubesEsportivos.Models.Entities
         public string CEP { get => cep!; set => cep = value; }
 
         public DateTime MembershipDate { get => membershipDate; set => membershipDate = value; }
-        public List<Dependent> dependents { get; set; }
+        public List<Dependent> Dependents { get; set; } = new List<Dependent>();
     }
 }

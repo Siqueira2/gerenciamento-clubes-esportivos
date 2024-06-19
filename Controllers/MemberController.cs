@@ -42,7 +42,7 @@ namespace GerenciamentoClubesEsportivos.Controllers
 
             //if (!isValid)
               //  throw new Exception(results[0].ErrorMessage);
-
+              member.Id = id;
             repository.Update(member);
         }
         public Member GetMemberByID(string id)
