@@ -112,19 +112,12 @@ namespace GerenciamentoClubesEsportivos.Views
         }
         private void EditButton_Click(Object sender, EventArgs e)
         {
-            DependentController controllerx = new DependentController(new DependentRepository());
-
-            MessageBox.Show("xx5");
-            foreach (var item in controllerx.GetAllDependents())
-            {
-                MessageBox.Show(item.Name + item.Id);
-            }
-
             Member member = controller.GetMemberByID(selectedMemberId);
 
             controller.UpdateMember(selectedMemberId, IName, CPF, Email, PhoneNumber, CEP, member.MembershipDate);
             UpdateDataGridView(controller.GetAllMembers());
             Clear();
+            Table.ClearSelection();
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
@@ -158,6 +151,8 @@ namespace GerenciamentoClubesEsportivos.Views
         //metodos adicionais/dependentes
         private void Clear()
         {
+            selectedMemberId = IName = CEP = CPF = Email = PhoneNumber = "";
+
             InputName.Text =
             InputEmail.Text =
             InputCPF.Text =
@@ -224,6 +219,18 @@ namespace GerenciamentoClubesEsportivos.Views
                     MessageBox.Show($"Ocorreu um erro ao exportar para XML: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void MemberView_Load(object sender, EventArgs e)
+        {
+            Table.RowHeadersVisible = false;
+            Table.Columns["Id"].HeaderText = "ID";
+            Table.Columns["Name"].HeaderText = "Nome";
+            Table.Columns["Email"].HeaderText = "E-mail";
+            Table.Columns["CPF"].HeaderText = "CPF";
+            Table.Columns["CEP"].HeaderText = "CEP";
+            Table.Columns["PhoneNumber"].HeaderText = "Telefone";
+            Table.Columns["MembershipDate"].HeaderText = "Data de Associação";
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

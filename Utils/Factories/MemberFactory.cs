@@ -13,7 +13,7 @@ namespace GerenciamentoClubesEsportivos.Utils.Factories
         {
             return new Member
             {
-                Name = name.ToUpper(),
+                Name = name,
                 CPF = cpf,
                 Email = email,
                 PhoneNumber = phoneNumber,

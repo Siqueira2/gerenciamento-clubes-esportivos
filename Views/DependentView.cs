@@ -15,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GerenciamentoClubesEsportivos.Views
 {
-    public partial class DependentView : UserControl
+    public partial class DependentView : UserControl, INotifyPropertyChanged
     {
         private readonly DependentController controller;
         private BindingList<Dependent>? bindingDependents;
@@ -83,7 +83,7 @@ namespace GerenciamentoClubesEsportivos.Views
         {
             bindingDependents = new BindingList<Dependent>(dependents);
             Table.DataSource = bindingDependents.Select(dependent =>
-                new { dependent.Id, dependent.Name, dependent.kinship, dependent.memberId }
+                new { dependent.Id, dependent.Name, dependent.CPF, dependent.kinship, dependent.memberId }
             ).ToList();
             Table.Refresh();
         }
@@ -91,9 +91,16 @@ namespace GerenciamentoClubesEsportivos.Views
         //metodos de handle de eventos
         private void SaveButton_Click(Object sender, EventArgs e)
         {
-            controller.AddDependent(IName, CPF, Kinship, MemberID);
-            UpdateDataGridView(controller.GetAllDependents());
-            Clear();
+            try
+            {
+                controller.AddDependent(IName, CPF, Kinship, MemberID);
+                UpdateDataGridView(controller.GetAllDependents());
+                Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void DismissButton_Click(object sender, EventArgs e)
         {
@@ -108,6 +115,7 @@ namespace GerenciamentoClubesEsportivos.Views
             controller.UpdateDependent(selectedDependentId, IName, CPF, Kinship, dependent.memberId);
             UpdateDataGridView(controller.GetAllDependents());
             Clear();
+            Table.ClearSelection();
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
@@ -121,9 +129,27 @@ namespace GerenciamentoClubesEsportivos.Views
             UpdateDataGridView(controller.SearchByName(dependentName));
         }
 
+        private void HandleCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = Table.Rows[e.RowIndex];
+
+
+            selectedDependentId = (row.Cells[0].Value.ToString()!).ToString();
+            IName = row.Cells[1].Value?.ToString() ?? string.Empty;
+            CPF = row.Cells[2].Value?.ToString() ?? string.Empty;
+            Kinship = row.Cells[3].Value?.ToString() ?? string.Empty;
+            MemberID = row.Cells[4].Value?.ToString() ?? string.Empty;
+
+            EnableUpdateOrDelete();
+        }
+
         //metodos adicionais/dependentes
         private void Clear()
         {
+            selectedDependentId = IName = CPF = Kinship = MemberID = "";
+
             InputName.Text =
             InputKinship.Text =
             InputMemberID.Text =
@@ -134,6 +160,7 @@ namespace GerenciamentoClubesEsportivos.Views
             SaveButton.Enabled = false;
             DeleteButton.Visible = true;
             DeleteButton.Enabled = true;
+            InputMemberID.Enabled = false;
             EditButton.Visible = true;
             EditButton.Enabled = true;
         }
@@ -151,6 +178,16 @@ namespace GerenciamentoClubesEsportivos.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private void DependentView_Load(object sender, EventArgs e)
+        {
+            UpdateDataGridView(controller.GetAllDependents());
+            Table.RowHeadersVisible = false;
+            Table.Columns["Id"].HeaderText = "ID";
+            Table.Columns["Name"].HeaderText = "Nome";
+            Table.Columns["CPF"].HeaderText = "CPF";
+            Table.Columns["Kinship"].HeaderText = "Parentesco";
+            Table.Columns["MemberID"].HeaderText = "ID do Membro";
+        }
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

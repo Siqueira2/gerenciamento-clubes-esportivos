@@ -36,15 +36,15 @@ namespace GerenciamentoClubesEsportivos.Controllers
         }
         public void UpdateDependent(string id, string name, string cpf, string kinship, string memberId)
         {
-            Dependent member = DependentFactory.Build(name, cpf, kinship, memberId);
+            Dependent dependent = DependentFactory.Build(name, cpf, kinship, memberId);
             //var context = new ValidationContext(member);
             //var results = new List<ValidationResult>();
             //bool isValid = Validator.TryValidateObject(member, context, results, true);
 
             //if (!isValid)
-              //  throw new Exception(results[0].ErrorMessage);
-
-            repository.Update(member);
+            //  throw new Exception(results[0].ErrorMessage);
+            dependent.Id = id;
+            repository.Update(dependent);
         }
         public Dependent GetDependentByID(string id)
         {
@@ -60,11 +60,6 @@ namespace GerenciamentoClubesEsportivos.Controllers
         public List<Dependent> GetAllDependents()
         {
             List<Dependent> dependents = repository.GetAll();
-
-            foreach (var item in dependents)
-            {
-                MessageBox.Show("xx" + item.Name);
-            }
             return dependents;
         }
     }

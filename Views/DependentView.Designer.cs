@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             EditButton = new Button();
             InputName = new TextBox();
             Table = new DataGridView();
@@ -69,12 +70,24 @@
             // Table
             // 
             Table.AllowUserToAddRows = false;
+            Table.AllowUserToDeleteRows = false;
+            Table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            Table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             Table.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             Table.Location = new Point(358, 54);
             Table.Name = "Table";
+            Table.ReadOnly = true;
             Table.RowHeadersWidth = 51;
             Table.Size = new Size(616, 428);
             Table.TabIndex = 33;
+            Table.CellClick += HandleCellClick;
             // 
             // InputSearch
             // 
@@ -207,6 +220,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "DependentView";
             Size = new Size(990, 498);
+            Load += DependentView_Load;
             ((System.ComponentModel.ISupportInitialize)Table).EndInit();
             ResumeLayout(false);
             PerformLayout();
