@@ -57,7 +57,7 @@
             EditButton.Location = new Point(83, 340);
             EditButton.Name = "EditButton";
             EditButton.Size = new Size(75, 23);
-            EditButton.TabIndex = 23;
+            EditButton.TabIndex = 7;
             EditButton.Text = "Editar";
             EditButton.UseVisualStyleBackColor = true;
             EditButton.Visible = false;
@@ -69,7 +69,7 @@
             InputName.Name = "InputName";
             InputName.PlaceholderText = "Emma Lazarus";
             InputName.Size = new Size(240, 23);
-            InputName.TabIndex = 20;
+            InputName.TabIndex = 0;
             // 
             // Table
             // 
@@ -100,7 +100,7 @@
             InputSearch.Name = "InputSearch";
             InputSearch.PlaceholderText = "John Doe";
             InputSearch.Size = new Size(273, 23);
-            InputSearch.TabIndex = 22;
+            InputSearch.TabIndex = 9;
             // 
             // LabelName
             // 
@@ -116,7 +116,7 @@
             SearchButton.Location = new Point(635, 16);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
-            SearchButton.TabIndex = 12;
+            SearchButton.TabIndex = 10;
             SearchButton.Text = "Buscar";
             SearchButton.UseVisualStyleBackColor = true;
             SearchButton.Click += SearchButton_Click;
@@ -127,14 +127,14 @@
             InputCPF.Name = "InputCPF";
             InputCPF.PlaceholderText = "000.000.000-00";
             InputCPF.Size = new Size(240, 23);
-            InputCPF.TabIndex = 19;
+            InputCPF.TabIndex = 3;
             // 
             // DismissButton
             // 
             DismissButton.Location = new Point(248, 294);
             DismissButton.Name = "DismissButton";
             DismissButton.Size = new Size(75, 23);
-            DismissButton.TabIndex = 13;
+            DismissButton.TabIndex = 6;
             DismissButton.Text = "Cancelar";
             DismissButton.UseVisualStyleBackColor = true;
             DismissButton.Click += DismissButton_Click;
@@ -145,7 +145,7 @@
             InputEmail.Name = "InputEmail";
             InputEmail.PlaceholderText = "emma@mail.com";
             InputEmail.Size = new Size(240, 23);
-            InputEmail.TabIndex = 18;
+            InputEmail.TabIndex = 1;
             // 
             // DeleteButton
             // 
@@ -153,7 +153,7 @@
             DeleteButton.Location = new Point(248, 340);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(75, 23);
-            DeleteButton.TabIndex = 14;
+            DeleteButton.TabIndex = 8;
             DeleteButton.Text = "Deletar";
             DeleteButton.UseVisualStyleBackColor = true;
             DeleteButton.Visible = false;
@@ -165,14 +165,14 @@
             InputCEP.Name = "InputCEP";
             InputCEP.PlaceholderText = "11.222-333";
             InputCEP.Size = new Size(240, 23);
-            InputCEP.TabIndex = 21;
+            InputCEP.TabIndex = 4;
             // 
             // SaveButton
             // 
             SaveButton.Location = new Point(83, 294);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new Size(75, 23);
-            SaveButton.TabIndex = 15;
+            SaveButton.TabIndex = 5;
             SaveButton.Text = "Adicionar";
             SaveButton.UseVisualStyleBackColor = true;
             SaveButton.Click += SaveButton_Click;
@@ -183,7 +183,7 @@
             InputPhone.Name = "InputPhone";
             InputPhone.PlaceholderText = "(00) 12345-6789";
             InputPhone.Size = new Size(240, 23);
-            InputPhone.TabIndex = 17;
+            InputPhone.TabIndex = 2;
             // 
             // label2
             // 
@@ -236,7 +236,7 @@
             ExportButton.Location = new Point(818, 16);
             ExportButton.Name = "ExportButton";
             ExportButton.Size = new Size(75, 23);
-            ExportButton.TabIndex = 15;
+            ExportButton.TabIndex = 16;
             ExportButton.Text = "Exportar";
             ExportButton.UseVisualStyleBackColor = true;
             ExportButton.Click += ExportButton_Click;

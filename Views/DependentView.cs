@@ -170,6 +170,7 @@ namespace GerenciamentoClubesEsportivos.Views
             DeleteButton.Visible = false;
             DeleteButton.Enabled = false;
             EditButton.Visible = false;
+            InputMemberID.Enabled = true;
             EditButton.Enabled = false;
         }
 
