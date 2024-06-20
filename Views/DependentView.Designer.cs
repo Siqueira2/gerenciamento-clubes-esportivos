@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             EditButton = new Button();
             InputName = new TextBox();
             Table = new DataGridView();
@@ -53,7 +53,7 @@
             EditButton.Location = new Point(83, 340);
             EditButton.Name = "EditButton";
             EditButton.Size = new Size(75, 23);
-            EditButton.TabIndex = 40;
+            EditButton.TabIndex = 6;
             EditButton.Text = "Editar";
             EditButton.UseVisualStyleBackColor = true;
             EditButton.Visible = false;
@@ -65,21 +65,21 @@
             InputName.Name = "InputName";
             InputName.PlaceholderText = "Emma Lazarus";
             InputName.Size = new Size(240, 23);
-            InputName.TabIndex = 37;
+            InputName.TabIndex = 0;
             // 
             // Table
             // 
             Table.AllowUserToAddRows = false;
             Table.AllowUserToDeleteRows = false;
             Table.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            Table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            Table.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             Table.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             Table.Location = new Point(358, 54);
             Table.Name = "Table";
@@ -95,7 +95,7 @@
             InputSearch.Name = "InputSearch";
             InputSearch.PlaceholderText = "John Doe";
             InputSearch.Size = new Size(273, 23);
-            InputSearch.TabIndex = 39;
+            InputSearch.TabIndex = 8;
             // 
             // LabelName
             // 
@@ -111,7 +111,7 @@
             SearchButton.Location = new Point(635, 16);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(75, 23);
-            SearchButton.TabIndex = 29;
+            SearchButton.TabIndex = 9;
             SearchButton.Text = "Buscar";
             SearchButton.UseVisualStyleBackColor = true;
             SearchButton.Click += SearchButton_Click;
@@ -121,7 +121,7 @@
             DismissButton.Location = new Point(248, 294);
             DismissButton.Name = "DismissButton";
             DismissButton.Size = new Size(75, 23);
-            DismissButton.TabIndex = 30;
+            DismissButton.TabIndex = 5;
             DismissButton.Text = "Cancelar";
             DismissButton.UseVisualStyleBackColor = true;
             DismissButton.Click += DismissButton_Click;
@@ -132,7 +132,7 @@
             InputCPF.Name = "InputCPF";
             InputCPF.PlaceholderText = "000.000.000-00";
             InputCPF.Size = new Size(240, 23);
-            InputCPF.TabIndex = 35;
+            InputCPF.TabIndex = 1;
             // 
             // DeleteButton
             // 
@@ -140,7 +140,7 @@
             DeleteButton.Location = new Point(248, 340);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(75, 23);
-            DeleteButton.TabIndex = 31;
+            DeleteButton.TabIndex = 7;
             DeleteButton.Text = "Deletar";
             DeleteButton.UseVisualStyleBackColor = true;
             DeleteButton.Visible = false;
@@ -151,7 +151,7 @@
             SaveButton.Location = new Point(83, 294);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new Size(75, 23);
-            SaveButton.TabIndex = 32;
+            SaveButton.TabIndex = 4;
             SaveButton.Text = "Adicionar";
             SaveButton.UseVisualStyleBackColor = true;
             SaveButton.Click += SaveButton_Click;
@@ -171,7 +171,7 @@
             InputKinship.Name = "InputKinship";
             InputKinship.PlaceholderText = "Pai";
             InputKinship.Size = new Size(240, 23);
-            InputKinship.TabIndex = 42;
+            InputKinship.TabIndex = 3;
             // 
             // label2
             // 
@@ -188,7 +188,7 @@
             InputMemberID.Name = "InputMemberID";
             InputMemberID.PlaceholderText = "0000";
             InputMemberID.Size = new Size(240, 23);
-            InputMemberID.TabIndex = 44;
+            InputMemberID.TabIndex = 2;
             // 
             // label3
             // 
