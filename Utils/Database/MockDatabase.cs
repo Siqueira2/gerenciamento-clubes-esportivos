@@ -8,10 +8,14 @@ namespace GerenciamentoClubesEsportivos.Utils.Database
 {
     public class MockDatabase
     {
-        public List<Member> Members { get; set; }
-        public List<Dependent> Dependents { get; set; }
+        private static readonly Lazy<MockDatabase> _instance = new Lazy<MockDatabase>(() => new MockDatabase());
 
-        public MockDatabase()
+        public static MockDatabase Instance => _instance.Value;
+
+        public List<Member> Members { get; private set; }
+        public List<Dependent> Dependents { get; private set; }
+
+        private MockDatabase()
         {
             Members = new List<Member>();
             Dependents = new List<Dependent>();

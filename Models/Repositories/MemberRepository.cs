@@ -15,7 +15,7 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
 
         public MemberRepository()
         {
-            MockDatabase = new MockDatabase();
+            MockDatabase = MockDatabase.Instance;
         }
         public List<Member> GetAll()
         {

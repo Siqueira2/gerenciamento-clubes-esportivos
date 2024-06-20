@@ -83,7 +83,7 @@ namespace GerenciamentoClubesEsportivos.Views
         {
             bindingDependents = new BindingList<Dependent>(dependents);
             Table.DataSource = bindingDependents.Select(dependent =>
-                new { dependent.Id, dependent.Name, dependent.kinship }
+                new { dependent.Id, dependent.Name, dependent.kinship, dependent.memberId }
             ).ToList();
             Table.Refresh();
         }
@@ -103,13 +103,6 @@ namespace GerenciamentoClubesEsportivos.Views
         }
         private void EditButton_Click(Object sender, EventArgs e)
         {
-            DependentController controllerx = new DependentController(new DependentRepository());
-
-            MessageBox.Show("xx5");
-            foreach (var item in controllerx.GetAllDependents())
-            {
-                MessageBox.Show(item.Name + item.Id);
-            }
             Dependent dependent = controller.GetDependentByID(selectedDependentId);
 
             controller.UpdateDependent(selectedDependentId, IName, CPF, Kinship, dependent.memberId);

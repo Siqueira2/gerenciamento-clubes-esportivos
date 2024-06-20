@@ -14,8 +14,8 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
     {
         private MockDatabase MockDatabase;
 
-        public DependentRepository() { 
-            MockDatabase = new MockDatabase();
+        public DependentRepository() {
+            MockDatabase = MockDatabase.Instance;
         }
 
         public void Add(Dependent entity)
