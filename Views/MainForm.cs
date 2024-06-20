@@ -10,10 +10,12 @@ namespace GerenciamentoClubesEsportivos
     public partial class MainForm : Form
     {
         private MemberView? memberView;
+        private DependentView? dependentView;
         public MainForm()
         {
             InitializeComponent();
             memberView = new MemberView(new MemberController(new MemberRepository()));
+            dependentView = new DependentView(new DependentController(new DependentRepository()));
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -28,6 +30,11 @@ namespace GerenciamentoClubesEsportivos
         private void Members_Click(object sender, EventArgs e)
         {
             AddUserControl(memberView!);
+        }
+
+        private void Dependents_Click(object sender, EventArgs e)
+        {
+            AddUserControl(dependentView!);
         }
     }
 }

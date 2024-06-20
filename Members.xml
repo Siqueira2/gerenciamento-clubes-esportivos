@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMember xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Member>
+    <Id>8eba</Id>
+    <Name>João Silva</Name>
+    <CPF>123.456.789-00</CPF>
+    <Email>joao.silva@example.com</Email>
+    <PhoneNumber>00 123456789</PhoneNumber>
+    <CEP>12345-678</CEP>
+    <MembershipDate>2023-01-15T12:30:00</MembershipDate>
+    <Dependents>
+      <Dependent>
+        <Id>60eb</Id>
+        <Name>Maria Silva</Name>
+        <CPF>987.654.321-00</CPF>
+        <kinship>Filha</kinship>
+        <memberId>8eba</memberId>
+      </Dependent>
+    </Dependents>
+  </Member>
+  <Member>
+    <Id>7e34</Id>
+    <Name>Ana Souza</Name>
+    <CPF>111.222.333-44</CPF>
+    <Email>ana.souza@example.com</Email>
+    <PhoneNumber>00 987654321</PhoneNumber>
+    <CEP>54321-876</CEP>
+    <MembershipDate>2023-02-20T14:00:00</MembershipDate>
+    <Dependents />
+  </Member>
+  <Member>
+    <Id>3a8d</Id>
+    <Name>Carlos Oliveira</Name>
+    <CPF>222.333.444-55</CPF>
+    <Email>carlos.oliveira@example.com</Email>
+    <PhoneNumber>00 555666777</PhoneNumber>
+    <CEP>98765-432</CEP>
+    <MembershipDate>2023-03-25T10:45:00</MembershipDate>
+    <Dependents>
+      <Dependent>
+        <Id>1c0a</Id>
+        <Name>Pedro Oliveira</Name>
+        <CPF>333.444.555-66</CPF>
+        <kinship>Filho</kinship>
+        <memberId>3a8d</memberId>
+      </Dependent>
+      <Dependent>
+        <Id>5e17</Id>
+        <Name>Marcos Oliveira</Name>
+        <CPF>444.555.666-77</CPF>
+        <kinship>Filho</kinship>
+        <memberId>3a8d</memberId>
+      </Dependent>
+    </Dependents>
+  </Member>
+  <Member>
+    <Id>4f92</Id>
+    <Name>Juliana Santos</Name>
+    <CPF>555.666.777-88</CPF>
+    <Email>juliana.santos@example.com</Email>
+    <PhoneNumber>00 222333444</PhoneNumber>
+    <CEP>76543-210</CEP>
+    <MembershipDate>2023-04-10T15:20:00</MembershipDate>
+    <Dependents />
+  </Member>
+  <Member>
+    <Id>9b7f</Id>
+    <Name>Fernanda Lima</Name>
+    <CPF>666.777.888-99</CPF>
+    <Email>fernanda.lima@example.com</Email>
+    <PhoneNumber>00 444555666</PhoneNumber>
+    <CEP>87654-321</CEP>
+    <MembershipDate>2023-05-05T08:00:00</MembershipDate>
+    <Dependents>
+      <Dependent>
+        <Id>d29b</Id>
+        <Name>Rafael Lima</Name>
+        <CPF>777.888.999-00</CPF>
+        <kinship>Filho</kinship>
+        <memberId>9b7f</memberId>
+      </Dependent>
+    </Dependents>
+  </Member>
+</ArrayOfMember>

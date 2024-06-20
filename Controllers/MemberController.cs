@@ -33,28 +33,26 @@ namespace GerenciamentoClubesEsportivos.Controllers
 
             repository.Add(member);
         }
-        public void UpdateMember(int id, string name, string cpf, string email, string phoneNumber, string cep, DateTime membershipDate)
+        public void UpdateMember(string id, string name, string cpf, string email, string phoneNumber, string cep, DateTime membershipDate)
         {
             Member member = MemberFactory.Build(name, cpf, email, phoneNumber, cep, membershipDate);
-            member.Id = id;
-
             //var context = new ValidationContext(member);
             //var results = new List<ValidationResult>();
             //bool isValid = Validator.TryValidateObject(member, context, results, true);
 
             //if (!isValid)
               //  throw new Exception(results[0].ErrorMessage);
-
+              member.Id = id;
             repository.Update(member);
         }
-        public Member GetMemberByID(int id)
+        public Member GetMemberByID(string id)
         {
             return repository.GetByID(id);
         }
         public List<Member> SearchByName(string name) {
             return repository.Search(name);
         }
-        public void DeleteMember(int id)
+        public void DeleteMember(string id)
         {
             repository.Delete(id);
         }

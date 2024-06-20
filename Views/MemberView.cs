@@ -1,5 +1,6 @@
 ﻿using GerenciamentoClubesEsportivos.Controllers;
 using GerenciamentoClubesEsportivos.Models.Entities;
+using GerenciamentoClubesEsportivos.Models.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ namespace GerenciamentoClubesEsportivos.Views
     {
         private readonly MemberController controller;
         private BindingList<Member>? bindingMembers;
-        private int selectedMemberId;
+        private string selectedMemberId;
 
         private string? name;
         private string? email;
@@ -116,6 +117,7 @@ namespace GerenciamentoClubesEsportivos.Views
             controller.UpdateMember(selectedMemberId, IName, CPF, Email, PhoneNumber, CEP, member.MembershipDate);
             UpdateDataGridView(controller.GetAllMembers());
             Clear();
+            Table.ClearSelection();
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
@@ -134,7 +136,7 @@ namespace GerenciamentoClubesEsportivos.Views
 
             DataGridViewRow row = Table.Rows[e.RowIndex];
 
-            selectedMemberId = int.Parse(row.Cells[0].Value.ToString()!);
+            selectedMemberId = (row.Cells[0].Value.ToString()!).ToString();
             IName = row.Cells[1].Value?.ToString() ?? string.Empty;
             Email = row.Cells[2].Value?.ToString() ?? string.Empty;
             CPF = row.Cells[3].Value?.ToString() ?? string.Empty;
@@ -149,6 +151,8 @@ namespace GerenciamentoClubesEsportivos.Views
         //metodos adicionais/dependentes
         private void Clear()
         {
+            selectedMemberId = IName = CEP = CPF = Email = PhoneNumber = "";
+
             InputName.Text =
             InputEmail.Text =
             InputCPF.Text =
@@ -215,6 +219,18 @@ namespace GerenciamentoClubesEsportivos.Views
                     MessageBox.Show($"Ocorreu um erro ao exportar para XML: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void MemberView_Load(object sender, EventArgs e)
+        {
+            Table.RowHeadersVisible = false;
+            Table.Columns["Id"].HeaderText = "ID";
+            Table.Columns["Name"].HeaderText = "Nome";
+            Table.Columns["Email"].HeaderText = "E-mail";
+            Table.Columns["CPF"].HeaderText = "CPF";
+            Table.Columns["CEP"].HeaderText = "CEP";
+            Table.Columns["PhoneNumber"].HeaderText = "Telefone";
+            Table.Columns["MembershipDate"].HeaderText = "Data de Associação";
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

@@ -9,11 +9,11 @@ namespace GerenciamentoClubesEsportivos.Models.Entities
 {
     public abstract class User
     {
-        private int id;
+        private string id;
         private string? name;
         private string? cpf;
 
-        public int Id { get => id; set => id = value; }
+        public string Id { get => id; set => id = value; }
 
         [Required]
         [StringLength(100, ErrorMessage = "O nome não pode ter mais de 100 caracteres.")]
