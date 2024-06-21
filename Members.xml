@@ -13,8 +13,8 @@
         <Id>60eb</Id>
         <Name>Maria Silva</Name>
         <CPF>987.654.321-00</CPF>
-        <kinship>Filha</kinship>
-        <memberId>8eba</memberId>
+        <Kinship>Filha</Kinship>
+        <MemberId>8eba</MemberId>
       </Dependent>
     </Dependents>
   </Member>
@@ -41,15 +41,15 @@
         <Id>1c0a</Id>
         <Name>Pedro Oliveira</Name>
         <CPF>333.444.555-66</CPF>
-        <kinship>Filho</kinship>
-        <memberId>3a8d</memberId>
+        <Kinship>Filho</Kinship>
+        <MemberId>3a8d</MemberId>
       </Dependent>
       <Dependent>
         <Id>5e17</Id>
         <Name>Marcos Oliveira</Name>
         <CPF>444.555.666-77</CPF>
-        <kinship>Filho</kinship>
-        <memberId>3a8d</memberId>
+        <Kinship>Filho</Kinship>
+        <MemberId>3a8d</MemberId>
       </Dependent>
     </Dependents>
   </Member>
@@ -76,8 +76,8 @@
         <Id>d29b</Id>
         <Name>Rafael Lima</Name>
         <CPF>777.888.999-00</CPF>
-        <kinship>Filho</kinship>
-        <memberId>9b7f</memberId>
+        <Kinship>Filho</Kinship>
+        <MemberId>9b7f</MemberId>
       </Dependent>
     </Dependents>
   </Member>
