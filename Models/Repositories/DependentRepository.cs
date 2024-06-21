@@ -44,7 +44,7 @@ namespace GerenciamentoClubesEsportivos.Models.Repositories
         }
 
         public List<Dependent> GetByMemberId(string memberID) {
-            return MockDatabase.GetDependents().Where(d => d.memberId == memberID).ToList();
+            return MockDatabase.GetDependents().Where(d => d.MemberId == memberID).ToList();
         }
         public List<Dependent> Search(string query)
         {

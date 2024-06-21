@@ -18,9 +18,11 @@ namespace GerenciamentoClubesEsportivos.Models.Entities
         [EmailAddress]
         public string Email { get => email!; set => email = value; }
 
+        [Required]
         [Phone]
         public string PhoneNumber { get => phoneNumber!; set => phoneNumber = value; }
 
+        [Required]
         [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "O CEP deve estar no formato XXXXX-XXX.")]
         public string CEP { get => cep!; set => cep = value; }
 

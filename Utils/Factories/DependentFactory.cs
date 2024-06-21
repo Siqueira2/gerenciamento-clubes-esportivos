@@ -15,8 +15,8 @@ namespace GerenciamentoClubesEsportivos.Utils.Factories
             {
                 Name = name,
                 CPF = cpf,
-                kinship = kinship,
-                memberId = memberId
+                Kinship = kinship,
+                MemberId = memberId
             };
         }
     }

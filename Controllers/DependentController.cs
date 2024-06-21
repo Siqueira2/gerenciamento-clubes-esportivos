@@ -24,25 +24,26 @@ namespace GerenciamentoClubesEsportivos.Controllers
         {
             Dependent dependent = DependentFactory.Build(name, cpf, kinship, memberId);
 
-            //var context = new ValidationContext(member);
-            //var results = new List<ValidationResult>();
-            //bool isValid = Validator.TryValidateObject(member, context, results, true);
+            var context = new ValidationContext(dependent);
+            var results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(dependent, context, results, true);
 
-            //if (!isValid)
-            //  throw new Exception(results[0].ErrorMessage);
+            if (!isValid)
+                throw new Exception(results[0].ErrorMessage);
 
-            //repository.AddDependent(dependent);
             repository.Add(dependent);
         }
         public void UpdateDependent(string id, string name, string cpf, string kinship, string memberId)
         {
             Dependent dependent = DependentFactory.Build(name, cpf, kinship, memberId);
-            //var context = new ValidationContext(member);
-            //var results = new List<ValidationResult>();
-            //bool isValid = Validator.TryValidateObject(member, context, results, true);
 
-            //if (!isValid)
-            //  throw new Exception(results[0].ErrorMessage);
+            var context = new ValidationContext(dependent);
+            var results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(dependent, context, results, true);
+
+            if (!isValid)
+                throw new Exception(results[0].ErrorMessage);
+
             dependent.Id = id;
             repository.Update(dependent);
         }

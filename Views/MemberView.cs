@@ -17,7 +17,7 @@ namespace GerenciamentoClubesEsportivos.Views
     {
         private readonly MemberController controller;
         private BindingList<Member>? bindingMembers;
-        private string selectedMemberId;
+        private string? selectedMemberId;
 
         private string? name;
         private string? email;
@@ -95,14 +95,48 @@ namespace GerenciamentoClubesEsportivos.Views
             ).ToList();
             Table.Refresh();
         }
+        private void MemberView_Load(object sender, EventArgs e)
+        {
+            Table.RowHeadersVisible = false;
+            Table.Columns["Id"].HeaderText = "ID";
+            Table.Columns["Name"].HeaderText = "Nome";
+            Table.Columns["Email"].HeaderText = "E-mail";
+            Table.Columns["CPF"].HeaderText = "CPF";
+            Table.Columns["CEP"].HeaderText = "CEP";
+            Table.Columns["PhoneNumber"].HeaderText = "Telefone";
+            Table.Columns["MembershipDate"].HeaderText = "Data de Associação";
+        }
 
         //metodos de handle de eventos
         private void SaveButton_Click(Object sender, EventArgs e)
         {
-            DateTime membershipDate = DateTime.Now;
-            controller.AddMember(IName, CPF, Email, PhoneNumber, CEP, membershipDate);
+            try
+            {
+                controller.AddMember(IName, CPF, Email, PhoneNumber, CEP, DateTime.Now);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message);
+            }
+
             UpdateDataGridView(controller.GetAllMembers());
             Clear();
+        }
+        private void EditButton_Click(Object sender, EventArgs e)
+        {
+            try
+            {
+                Member member = controller.GetMemberByID(selectedMemberId!);
+                controller.UpdateMember(selectedMemberId!, IName, CPF, Email, PhoneNumber, CEP, member.MembershipDate);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message);
+            }
+
+            UpdateDataGridView(controller.GetAllMembers());
+            Clear();
+            Table.ClearSelection();
         }
         private void DismissButton_Click(object sender, EventArgs e)
         {
@@ -110,19 +144,18 @@ namespace GerenciamentoClubesEsportivos.Views
             Table.ClearSelection();
             DisableUpdateOrDelete();
         }
-        private void EditButton_Click(Object sender, EventArgs e)
-        {
-            Member member = controller.GetMemberByID(selectedMemberId);
-
-            controller.UpdateMember(selectedMemberId, IName, CPF, Email, PhoneNumber, CEP, member.MembershipDate);
-            UpdateDataGridView(controller.GetAllMembers());
-            Clear();
-            Table.ClearSelection();
-        }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            Member member = controller.GetMemberByID(selectedMemberId);
-            controller.DeleteMember(selectedMemberId);
+            try
+            {
+                Member member = controller.GetMemberByID(selectedMemberId!);
+                controller.DeleteMember(selectedMemberId!);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message);
+            }
+            
             UpdateDataGridView(controller.GetAllMembers());
         }
         private void SearchButton_Click(object sender, EventArgs e)
@@ -147,11 +180,52 @@ namespace GerenciamentoClubesEsportivos.Views
 
             EnableUpdateOrDelete();
         }
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.Filter = "Arquivos XML (*.xml)|*.xml|Todos os arquivos (*.*)|*.*";
+            openFileDialog1.Title = "Selecionar Arquivo XML";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string caminhoArquivo = openFileDialog1.FileName;
+                    controller.ImportFromXmlFile(caminhoArquivo);
+                    UpdateDataGridView(controller.GetAllMembers());
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage($"Ocorreu um erro ao importar o XML: {ex.Message}");
+                }
+            }
+        }
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Arquivos XML (*.xml)|*.xml|Todos os arquivos (*.*)|*.*";
+            saveFileDialog1.Title = "Salvar como XML";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string FileName = saveFileDialog1.FileName;
+                    controller.ExportAsXmlFile(FileName);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage($"Ocorreu um erro ao exportar para XML: {ex.Message}");
+                }
+            }
+        }
 
         //metodos adicionais/dependentes
         private void Clear()
         {
-            selectedMemberId = IName = CEP = CPF = Email = PhoneNumber = "";
+            selectedMemberId = 
+            IName = CEP = CPF = 
+            Email = PhoneNumber = "";
 
             InputName.Text =
             InputEmail.Text =
@@ -175,64 +249,14 @@ namespace GerenciamentoClubesEsportivos.Views
             EditButton.Visible = false;
             EditButton.Enabled = false;
         }
+        private void ShowErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        private void ImportButton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            openFileDialog1.Filter = "Arquivos XML (*.xml)|*.xml|Todos os arquivos (*.*)|*.*";
-            openFileDialog1.Title = "Selecionar Arquivo XML";
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    string caminhoArquivo = openFileDialog1.FileName;
-                    controller.ImportFromXmlFile(caminhoArquivo);
-                    UpdateDataGridView(controller.GetAllMembers());
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ocorreu um erro ao importar o XML: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void ExportButton_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Arquivos XML (*.xml)|*.xml|Todos os arquivos (*.*)|*.*";
-            saveFileDialog1.Title = "Salvar como XML";
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    string FileName = saveFileDialog1.FileName;
-                    controller.ExportAsXmlFile(FileName);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ocorreu um erro ao exportar para XML: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void MemberView_Load(object sender, EventArgs e)
-        {
-            Table.RowHeadersVisible = false;
-            Table.Columns["Id"].HeaderText = "ID";
-            Table.Columns["Name"].HeaderText = "Nome";
-            Table.Columns["Email"].HeaderText = "E-mail";
-            Table.Columns["CPF"].HeaderText = "CPF";
-            Table.Columns["CEP"].HeaderText = "CEP";
-            Table.Columns["PhoneNumber"].HeaderText = "Telefone";
-            Table.Columns["MembershipDate"].HeaderText = "Data de Associação";
-        }
-
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

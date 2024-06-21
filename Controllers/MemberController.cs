@@ -24,25 +24,26 @@ namespace GerenciamentoClubesEsportivos.Controllers
         {
             Member member = MemberFactory.Build(name, cpf, email, phoneNumber, cep, membershipDate);
 
-            //var context = new ValidationContext(member);
-            //var results = new List<ValidationResult>();
-            //bool isValid = Validator.TryValidateObject(member, context, results, true);
+            var context = new ValidationContext(member);
+            var results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(member, context, results, true);
 
-            //if (!isValid)
-              //  throw new Exception(results[0].ErrorMessage);
+            if (!isValid)
+                throw new Exception(results[0].ErrorMessage);
 
             repository.Add(member);
         }
         public void UpdateMember(string id, string name, string cpf, string email, string phoneNumber, string cep, DateTime membershipDate)
         {
             Member member = MemberFactory.Build(name, cpf, email, phoneNumber, cep, membershipDate);
-            //var context = new ValidationContext(member);
-            //var results = new List<ValidationResult>();
-            //bool isValid = Validator.TryValidateObject(member, context, results, true);
+            var context = new ValidationContext(member);
+            var results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(member, context, results, true);
 
-            //if (!isValid)
-              //  throw new Exception(results[0].ErrorMessage);
-              member.Id = id;
+            if (!isValid)
+                throw new Exception(results[0].ErrorMessage);
+
+            member.Id = id;
             repository.Update(member);
         }
         public Member GetMemberByID(string id)
@@ -64,6 +65,7 @@ namespace GerenciamentoClubesEsportivos.Controllers
         public List<Member> ImportFromXmlFile(string filePath)
         {
             List<Member> members = XmlService.DeserializeFromFile<Member>(filePath);
+
             if (members == null) return null;
 
             repository.AddAll(members);

@@ -19,7 +19,7 @@ namespace GerenciamentoClubesEsportivos.Views
     {
         private readonly DependentController controller;
         private BindingList<Dependent>? bindingDependents;
-        private string selectedDependentId;
+        private string? selectedDependentId;
 
         private string? name;
         private string? cpf;
@@ -83,9 +83,19 @@ namespace GerenciamentoClubesEsportivos.Views
         {
             bindingDependents = new BindingList<Dependent>(dependents);
             Table.DataSource = bindingDependents.Select(dependent =>
-                new { dependent.Id, dependent.Name, dependent.CPF, dependent.kinship, dependent.memberId }
+                new { dependent.Id, dependent.Name, dependent.CPF, dependent.Kinship, dependent.MemberId }
             ).ToList();
             Table.Refresh();
+        }
+        private void DependentView_Load(object sender, EventArgs e)
+        {
+            UpdateDataGridView(controller.GetAllDependents());
+            Table.RowHeadersVisible = false;
+            Table.Columns["Id"].HeaderText = "ID";
+            Table.Columns["Name"].HeaderText = "Nome";
+            Table.Columns["CPF"].HeaderText = "CPF";
+            Table.Columns["Kinship"].HeaderText = "Parentesco";
+            Table.Columns["MemberID"].HeaderText = "ID do Membro";
         }
 
         //metodos de handle de eventos
@@ -94,13 +104,15 @@ namespace GerenciamentoClubesEsportivos.Views
             try
             {
                 controller.AddDependent(IName, CPF, Kinship, MemberID);
-                UpdateDataGridView(controller.GetAllDependents());
-                Clear();
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowErrorMessage(ex.Message);
             }
+
+            UpdateDataGridView(controller.GetAllDependents());
+            Clear();
         }
         private void DismissButton_Click(object sender, EventArgs e)
         {
@@ -110,17 +122,32 @@ namespace GerenciamentoClubesEsportivos.Views
         }
         private void EditButton_Click(Object sender, EventArgs e)
         {
-            Dependent dependent = controller.GetDependentByID(selectedDependentId);
-
-            controller.UpdateDependent(selectedDependentId, IName, CPF, Kinship, dependent.memberId);
+            try
+            {
+                Dependent dependent = controller.GetDependentByID(selectedDependentId!);
+                controller.UpdateDependent(selectedDependentId!, IName, CPF, Kinship, dependent.MemberId);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message);
+            }
+            
             UpdateDataGridView(controller.GetAllDependents());
             Clear();
             Table.ClearSelection();
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            Dependent dependent = controller.GetDependentByID(selectedDependentId);
-            controller.DeleteDependent(selectedDependentId);
+            try
+            {
+                Dependent dependent = controller.GetDependentByID(selectedDependentId!);
+                controller.DeleteDependent(selectedDependentId!);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message);
+            }
+            
             UpdateDataGridView(controller.GetAllDependents());
         }
         private void SearchButton_Click(object sender, EventArgs e)
@@ -128,7 +155,6 @@ namespace GerenciamentoClubesEsportivos.Views
             string dependentName = InputSearch.Text;
             UpdateDataGridView(controller.SearchByName(dependentName));
         }
-
         private void HandleCellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -173,21 +199,13 @@ namespace GerenciamentoClubesEsportivos.Views
             InputMemberID.Enabled = true;
             EditButton.Enabled = false;
         }
-
+        private void ShowErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void DependentView_Load(object sender, EventArgs e)
-        {
-            UpdateDataGridView(controller.GetAllDependents());
-            Table.RowHeadersVisible = false;
-            Table.Columns["Id"].HeaderText = "ID";
-            Table.Columns["Name"].HeaderText = "Nome";
-            Table.Columns["CPF"].HeaderText = "CPF";
-            Table.Columns["Kinship"].HeaderText = "Parentesco";
-            Table.Columns["MemberID"].HeaderText = "ID do Membro";
         }
         public event PropertyChangedEventHandler? PropertyChanged;
     }

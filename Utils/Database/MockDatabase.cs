@@ -35,7 +35,7 @@ namespace GerenciamentoClubesEsportivos.Utils.Database
         public void AddDependent(Dependent dependent)
         {
             dependent.Id = GenerateId();
-            Member member = GetMemberById(dependent.memberId);
+            Member member = GetMemberById(dependent.MemberId);
             if (member != null)
             {
                 member.Dependents.Add(dependent);
@@ -58,7 +58,7 @@ namespace GerenciamentoClubesEsportivos.Utils.Database
 
         public List<Dependent> GetDependentsByMemberId(string memberId)
         {
-            return Dependents.Where(d => d.memberId == memberId).ToList();
+            return Dependents.Where(d => d.MemberId == memberId).ToList();
         }
 
         public void DeleteDependent(string id)
@@ -113,8 +113,8 @@ namespace GerenciamentoClubesEsportivos.Utils.Database
             {
                 existingDependent.Name = dependent.Name;
                 existingDependent.CPF = dependent.CPF;
-                existingDependent.kinship = dependent.kinship;
-                existingDependent.memberId = dependent.memberId;
+                existingDependent.Kinship = dependent.Kinship;
+                existingDependent.MemberId = dependent.MemberId;
             }
             else
             {
