@@ -39,21 +39,19 @@
             tabControl1.Controls.Add(Members);
             tabControl1.Controls.Add(Dependents);
             tabControl1.Location = new Point(-1, 1);
-            tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(997, 523);
+            tabControl1.Size = new Size(1139, 697);
             tabControl1.TabIndex = 6;
             tabControl1.Click += Dependents_Click;
             // 
             // Members
             // 
             Members.BackColor = Color.Gainsboro;
-            Members.Location = new Point(4, 24);
-            Members.Margin = new Padding(3, 2, 3, 2);
+            Members.Location = new Point(4, 29);
             Members.Name = "Members";
-            Members.Padding = new Padding(3, 2, 3, 2);
-            Members.Size = new Size(989, 495);
+            Members.Padding = new Padding(3, 3, 3, 3);
+            Members.Size = new Size(1131, 664);
             Members.TabIndex = 0;
             Members.Text = "Sócios";
             Members.Click += Members_Click;
@@ -61,23 +59,23 @@
             // Dependents
             // 
             Dependents.BackColor = Color.Gainsboro;
-            Dependents.Location = new Point(4, 24);
-            Dependents.Margin = new Padding(3, 2, 3, 2);
+            Dependents.Location = new Point(4, 29);
             Dependents.Name = "Dependents";
-            Dependents.Padding = new Padding(3, 2, 3, 2);
-            Dependents.Size = new Size(989, 495);
+            Dependents.Padding = new Padding(3, 3, 3, 3);
+            Dependents.Size = new Size(1131, 664);
             Dependents.TabIndex = 1;
             Dependents.Text = "Dependentes";
             Dependents.Click += Dependents_Click;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(997, 523);
+            ClientSize = new Size(1139, 697);
             Controls.Add(tabControl1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
-            Text = "Nome";
+            Text = "Gerenciador de Membros";
             Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             ResumeLayout(false);
